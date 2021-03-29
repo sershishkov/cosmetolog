@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 
@@ -13,6 +14,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import Icon from '@material-ui/core/Icon';
 
@@ -66,6 +69,15 @@ const useStyles = makeStyles((theme) => ({
 
 function MainHeader() {
   const { user, error, isLoading } = useUser();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
@@ -240,11 +252,44 @@ function MainHeader() {
               alignItems='center'
             >
               <Grid item>
-                <Link href='/services'>
-                  <a>
-                    <Typography variant='h6'>Услуги</Typography>
-                  </a>
-                </Link>
+                <Button
+                  aria-controls='simple-menu'
+                  aria-haspopup='true'
+                  onClick={handleClick}
+                  disableTypography
+                  style={{ fontSize: '1.05rem', fontWeight: 700 }}
+                >
+                  Услуги
+                </Button>
+                <Menu
+                  id='simple-menu'
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <Link href='/service1'>
+                      <a>
+                        <Typography variant='h6'>Услуга1</Typography>
+                      </a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link href='/service2'>
+                      <a>
+                        <Typography variant='h6'>Услуга2</Typography>
+                      </a>
+                    </Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <Link href='/service3'>
+                      <a>
+                        <Typography variant='h6'>Услуга3</Typography>
+                      </a>
+                    </Link>
+                  </MenuItem>
+                </Menu>
               </Grid>
               <Grid item>
                 <Link href='/teaching'>

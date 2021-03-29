@@ -27,7 +27,7 @@ function Home({
 Home.propTypes = {
   setNameOfPage: PropTypes.func.isRequired,
 
-  state__nameOfPage: PropTypes.string.isRequired,
+  state__nameOfPage: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
