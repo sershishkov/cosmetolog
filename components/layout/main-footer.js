@@ -40,7 +40,7 @@ function MainFooter() {
           <Grid
             container
             justify='center'
-            alignItems='left'
+            alignItems='flex-start'
             direction='column'
             style={{ height: '100%' }}
           >

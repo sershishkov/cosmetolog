@@ -256,7 +256,6 @@ function MainHeader() {
                   aria-controls='simple-menu'
                   aria-haspopup='true'
                   onClick={handleClick}
-                  disableTypography
                   style={{ fontSize: '1.05rem', fontWeight: 700 }}
                 >
                   Услуги
