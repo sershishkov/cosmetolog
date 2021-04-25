@@ -8,6 +8,10 @@ import { setNameOfPage } from '../reduxStore/actions/nameOfPage';
 import { makeStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Invitation from '../components/landing/Invitation';
+import Services from '../components/landing/Services';
+import Expertise from '../components/landing/Expertise';
+import Reviews from '../components/landing/Reviews';
+import Blog from '../components/landing/Blog';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +40,10 @@ function Home({
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Invitation />
+      <Services />
+      <Expertise />
+      <Reviews />
+      <Blog />
     </Grid>
   );
 }
