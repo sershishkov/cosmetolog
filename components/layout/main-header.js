@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -199,6 +199,7 @@ function MainHeader() {
   const [selectedPhone, setSelectedPhone] = useState('380679173017');
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [openDrawer, setOpenDrawer] = useState(false);
+  // const [fullSizeLogo, setFullSizeLogo] = useState(true);
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
@@ -208,9 +209,6 @@ function MainHeader() {
     setSelectedPhone(event.target.value);
   };
 
-  const onScrollHandler = (event) => {
-    console.log(event);
-  };
   const my_drawer = (
     <React.Fragment>
       <SwipeableDrawer
@@ -475,14 +473,17 @@ function MainHeader() {
     </React.Fragment>
   );
 
+  // useEffect(() => {
+  //   window.addEventListener('scroll', () => {
+  //     setFullSizeLogo(false);
+  //   });
+
+  // }, []);
+
   return (
     <React.Fragment>
       <ElevationScroll>
-        <AppBar
-          position='fixed'
-          className={classes.root}
-          onScroll={onScrollHandler}
-        >
+        <AppBar position='fixed' className={classes.root}>
           <Toolbar>
             <Grid
               container
@@ -671,7 +672,12 @@ function MainHeader() {
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item container className={classes.rowBottom}></Grid>
+              <Grid
+                item
+                container
+                className={classes.rowBottom}
+                // style={{ display: fullSizeLogo ? 'block' : 'none' }}
+              ></Grid>
             </Grid>
           </Toolbar>
         </AppBar>
