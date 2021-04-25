@@ -33,6 +33,7 @@ import DirectionsRunIcon from '@material-ui/icons/DirectionsRun';
 import RateReviewIcon from '@material-ui/icons/RateReview';
 import ContactsIcon from '@material-ui/icons/Contacts';
 import MoreIcon from '@material-ui/icons/More';
+import PhoneIcon from '@material-ui/icons/Phone';
 
 import Icon from '@material-ui/core/Icon';
 
@@ -185,7 +186,6 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerItem_icon: {
     fontSize: 28,
-    // marginRight: 0,
     color: theme.palette.common.colorGreen,
   },
   drawerItem_text: {
@@ -634,7 +634,7 @@ function MainHeader() {
                         <Grid item className={classes.phoneMe_phone}>
                           <Link href={`tel:+${selectedPhone}`}>
                             <a>
-                              <Icon className='fab fa-viber' />
+                              <PhoneIcon className={classes.drawerItem_icon} />
                             </a>
                           </Link>
                         </Grid>
