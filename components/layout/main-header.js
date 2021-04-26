@@ -199,7 +199,7 @@ function MainHeader() {
   const [selectedPhone, setSelectedPhone] = useState('380679173017');
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
   const [openDrawer, setOpenDrawer] = useState(false);
-  // const [fullSizeLogo, setFullSizeLogo] = useState(true);
+  const [fullSizeLogo, setFullSizeLogo] = useState(true);
 
   // if (isLoading) return <div>Loading...</div>;
   // if (error) return <div>{error.message}</div>;
@@ -473,12 +473,11 @@ function MainHeader() {
     </React.Fragment>
   );
 
-  // useEffect(() => {
-  //   window.addEventListener('scroll', () => {
-  //     setFullSizeLogo(false);
-  //   });
-
-  // }, []);
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setFullSizeLogo(false);
+    });
+  }, []);
 
   return (
     <React.Fragment>
@@ -525,7 +524,14 @@ function MainHeader() {
                         <Grid item className={classes.logo_img}>
                           <Link href='/'>
                             <a>
-                              <img src='/images/logo/Logo.png' alt='logo' />
+                              <img
+                                src='/images/logo/Logo.png'
+                                alt='logo'
+                                style={{
+                                  height: fullSizeLogo ? 120 : 88,
+                                  width: fullSizeLogo ? 120 : 88,
+                                }}
+                              />
                             </a>
                           </Link>
                         </Grid>
@@ -676,7 +682,7 @@ function MainHeader() {
                 item
                 container
                 className={classes.rowBottom}
-                // style={{ display: fullSizeLogo ? 'block' : 'none' }}
+                style={{ display: fullSizeLogo ? 'block' : 'none' }}
               ></Grid>
             </Grid>
           </Toolbar>

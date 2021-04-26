@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -51,10 +52,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Invitation = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Grid container className={classes.root}>
-      <Grid item xl={6} className={classes.wrapInvite}>
+      <Grid item sm={12} md={6} className={classes.wrapInvite}>
         <Grid
           container
           direction='column'
@@ -78,7 +82,7 @@ const Invitation = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item xl={6} className={classes.wrapPhoto}>
+      <Grid item sm={12} md={6} className={classes.wrapPhoto}>
         <img src='/images/home/invitation.jpg' alt='invitation' />
         <div className={classes.wrapPhoto_Gradient}></div>
       </Grid>
