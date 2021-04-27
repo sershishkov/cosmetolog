@@ -10,6 +10,8 @@ import PhoneIcon from '@material-ui/icons/Phone';
 
 const useStyles = makeStyles((theme) => ({
   footer: {
+    maxWidth: theme.breakpoints.width('xl'),
+    // border: '1px solid #f00',
     backgroundColor: theme.palette.common.white,
     height: 264,
   },
@@ -31,6 +33,11 @@ const useStyles = makeStyles((theme) => ({
   footer_contMap_wrapImg_img: {
     width: '100%',
     height: '100%',
+    overflow: 'hidden',
+    '& img': {
+      width: '100%',
+      height: '100%',
+    },
   },
 }));
 

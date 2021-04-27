@@ -7,12 +7,16 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   layoutContainer: {
-    // border: '1px solid #00ff00',
+    backgroundColor: theme.palette.common.white,
     padding: 0,
+    // border: '1px solid #000',
+    maxWidth: theme.breakpoints.width('xl'),
   },
   main: {
     paddingTop: 162,
-    // border: '1px solid #000',
+    maxWidth: theme.breakpoints.width('lg'),
+    minWidth: theme.breakpoints.width('sm'),
+    // border: '1px solid #f00',
     margin: 'auto',
   },
 }));
@@ -20,9 +24,9 @@ const useStyles = makeStyles((theme) => ({
 function Layout(props) {
   const classes = useStyles();
   return (
-    <Container maxwidth='xl' className={classes.layoutContainer}>
+    <Container className={classes.layoutContainer}>
       <MainHeader />
-      <Grid maxwidth='md'>
+      <Grid>
         <main className={classes.main}>{props.children}</main>
       </Grid>
       <MainFooter />

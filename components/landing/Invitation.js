@@ -10,7 +10,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: 30,
     backgroundColor: theme.palette.common.white,
-    height: 1080,
+    height: 918,
+    overflow: 'hidden',
+    maxWidth: theme.breakpoints.width('lg'),
   },
   Button: {
     backgroundColor: theme.palette.common.colorGreen,
@@ -35,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
     '& img': {
       width: '100%',
-      height: '100%',
-      borderRadius: 194,
+      height: 1029,
+      borderRadius: '194px 194px 0px 0px',
     },
     '& div': {
       position: 'absolute',

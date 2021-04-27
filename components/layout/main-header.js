@@ -51,6 +51,9 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.common.white,
+    maxWidth: theme.breakpoints.width('xl'),
+
+    padding: 0,
   },
   appBarContainer: {
     backgroundColor: theme.palette.common.white,
@@ -525,7 +528,7 @@ function MainHeader() {
                           <Link href='/'>
                             <a>
                               <img
-                                src='/images/logo/Logo.png'
+                                src='/images/logo/LogoColor.png'
                                 alt='logo'
                                 style={{
                                   height: fullSizeLogo ? 120 : 88,
