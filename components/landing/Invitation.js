@@ -8,12 +8,17 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    paddingTop: 30,
+    paddingTop: '3rem 1rem',
+
     backgroundColor: theme.palette.common.white,
     height: 918,
     overflow: 'hidden',
-    [theme.breakpoints.down('lg')]: {},
-    // width: '100%',
+    [theme.breakpoints.down('md')]: {
+      height: 691,
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: 918,
+    },
   },
   Button: {
     backgroundColor: theme.palette.common.colorGreen,
@@ -27,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapInvite: {
     height: '100%',
+    [theme.breakpoints.down('sm')]: {
+      height: 300,
+    },
   },
   contInvite: {
     height: '100%',
@@ -34,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    // 'text-align': 'right',
+    [theme.breakpoints.down('sm')]: {
+      alignItems: 'center',
+      'text-align': 'center',
+    },
   },
   contInvite__item: {
     width: '90%',
@@ -51,11 +64,20 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     height: '100%',
     overflow: 'hidden',
+    [theme.breakpoints.down('sm')]: {
+      height: 632,
+    },
 
     '& img': {
       width: '100%',
-      height: 1029,
+      height: '120%',
       borderRadius: '194px 194px 0px 0px',
+      [theme.breakpoints.down('md')]: {
+        borderRadius: '140px 140px 0px 0px',
+      },
+      [theme.breakpoints.down('sm')]: {
+        borderRadius: '86px 86px 0px 0px',
+      },
     },
     '& div': {
       position: 'absolute',
@@ -69,7 +91,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Invitation = () => {
+const Invitation = (props) => {
   const classes = useStyles();
   // const theme = useTheme();
   // const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
