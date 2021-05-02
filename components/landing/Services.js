@@ -14,31 +14,41 @@ import SVG_LipFour from '../../assets/svg/SVG_LipFour';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.common.white,
-    paddingTop: 30,
-    paddingBottom: 30,
-    maxWidth: theme.breakpoints.width('lg'),
-    // height: 1228,
+    padding: '3rem 1rem',
+
+    '& h5': {
+      // color: '#f00',
+      display: '-webkit-box',
+      '-webkit-line-clamp': 5 /* количество строк */,
+      '-webkit-box-orient': 'vertical',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    },
   },
-  rootItem: {},
+  rootItem: {
+    margin: '3rem 0rem',
+  },
   contServiceRow: {},
   wrapService: {},
   contService: {},
   service_icon: {
     height: 100,
   },
-  service_header: {},
-  service_description: {
-    overflow: 'hidden',
-    height: 60,
-    '& p': {
-      textOverflow: 'ellipsis',
-    },
+  service_icon_warap_svg: {
+    height: '100%',
+
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
+
+  item_article: {
+    marginBottom: '1rem',
+  },
+  service_header: {},
+  service_description: {},
   service_action: {},
   contAction: {},
   actionMore: {},
-
-  // text-overflow:ellipsis => ...
 }));
 
 const Services = () => {
@@ -56,7 +66,7 @@ const Services = () => {
       </Grid>
 
       <Grid item className={classes.rootItem}>
-        <Grid container className={classes.contServiceRow} direction='row'>
+        <Grid container className={classes.contServiceRow}>
           <Grid
             item
             xm={12}
@@ -66,23 +76,49 @@ const Services = () => {
             className={classes.wrapService}
           >
             <Grid container direction='column' className={classes.contService}>
-              <Grid item className={classes.service_icon}>
-                <Grid container justify='flex-end' alignItems='center'>
+              <Grid
+                item
+                className={`${classes.item_article}  ${classes.service_icon}`}
+              >
+                <Grid container className={classes.service_icon_warap_svg}>
                   <Grid item>
                     <SVG_LipOne width={132} height={52} color={`#9CCE9B`} />
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item className={classes.service_header}>
-                <Typography variant='h1'>Контурная пластика</Typography>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_header}`}
+              >
+                <Typography variant='h2'>Контурная пластика</Typography>
               </Grid>
-              <Grid item className={classes.service_description}>
-                <Typography variant='body1' component='p'>
-                  Текст рыба, который написан для примера в несколько строк.
-                  Таким образом можно понять как работает контейнер...
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_description}`}
+              >
+                <Typography variant='h5'>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Aliquam necessitatibus earum quibusdam. Amet velit vel nemo
+                  veritatis, modi nostrum perspiciatis ab blanditiis aliquid sit
+                  dolor facilis dolores eius totam exercitationem! Lorem ipsum,
+                  dolor sit amet consectetur adipisicing elit. Aliquam
+                  necessitatibus earum quibusdam. Amet velit vel nemo veritatis,
+                  modi nostrum perspiciatis ab blanditiis aliquid sit dolor
+                  facilis dolores eius totam exercitationem! Lorem ipsum, dolor
+                  sit amet consectetur adipisicing elit. Aliquam necessitatibus
+                  earum quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem! Lorem ipsum, dolor sit amet
+                  consectetur adipisicing elit. Aliquam necessitatibus earum
+                  quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem!
                 </Typography>
               </Grid>
-              <Grid item className={classes.service_action}>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_action}`}
+              >
                 <Button>
                   Подробнее <ArrowRightAltIcon />{' '}
                 </Button>
@@ -99,23 +135,49 @@ const Services = () => {
             className={classes.wrapService}
           >
             <Grid container direction='column' className={classes.contService}>
-              <Grid item className={classes.service_icon}>
-                <Grid container justify='flex-end' alignItems='center'>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_icon}`}
+              >
+                <Grid container className={classes.service_icon_warap_svg}>
                   <Grid item>
                     <SVG_LipTwo width={116} height={52} color={`#9CCE9B`} />
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item className={classes.service_header}>
-                <Typography variant='h1'>Контурная пластика</Typography>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_header}`}
+              >
+                <Typography variant='h2'>Контурная пластика</Typography>
               </Grid>
-              <Grid item className={classes.service_description}>
-                <Typography variant='body1' component='p'>
-                  Текст рыба, который написан для примера в несколько строк.
-                  Таким образом можно понять как работает контейнер...
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_description}`}
+              >
+                <Typography variant='h5'>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Aliquam necessitatibus earum quibusdam. Amet velit vel nemo
+                  veritatis, modi nostrum perspiciatis ab blanditiis aliquid sit
+                  dolor facilis dolores eius totam exercitationem! Lorem ipsum,
+                  dolor sit amet consectetur adipisicing elit. Aliquam
+                  necessitatibus earum quibusdam. Amet velit vel nemo veritatis,
+                  modi nostrum perspiciatis ab blanditiis aliquid sit dolor
+                  facilis dolores eius totam exercitationem! Lorem ipsum, dolor
+                  sit amet consectetur adipisicing elit. Aliquam necessitatibus
+                  earum quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem! Lorem ipsum, dolor sit amet
+                  consectetur adipisicing elit. Aliquam necessitatibus earum
+                  quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem!
                 </Typography>
               </Grid>
-              <Grid item className={classes.service_action}>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_action}`}
+              >
                 <Button>
                   Подробнее <ArrowRightAltIcon />{' '}
                 </Button>
@@ -136,23 +198,49 @@ const Services = () => {
             className={classes.wrapService}
           >
             <Grid container direction='column' className={classes.contService}>
-              <Grid item className={classes.service_icon}>
-                <Grid container justify='flex-end' alignItems='center'>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_icon}`}
+              >
+                <Grid container className={classes.service_icon_warap_svg}>
                   <Grid item>
                     <SVG_LipThree width={145} height={100} color={`#9CCE9B`} />
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item className={classes.service_header}>
-                <Typography variant='h1'>Контурная пластика</Typography>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_header}`}
+              >
+                <Typography variant='h2'>Контурная пластика</Typography>
               </Grid>
-              <Grid item className={classes.service_description}>
-                <Typography variant='body1' component='p'>
-                  Текст рыба, который написан для примера в несколько строк.
-                  Таким образом можно понять как работает контейнер...
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_description}`}
+              >
+                <Typography variant='h5'>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Aliquam necessitatibus earum quibusdam. Amet velit vel nemo
+                  veritatis, modi nostrum perspiciatis ab blanditiis aliquid sit
+                  dolor facilis dolores eius totam exercitationem! Lorem ipsum,
+                  dolor sit amet consectetur adipisicing elit. Aliquam
+                  necessitatibus earum quibusdam. Amet velit vel nemo veritatis,
+                  modi nostrum perspiciatis ab blanditiis aliquid sit dolor
+                  facilis dolores eius totam exercitationem! Lorem ipsum, dolor
+                  sit amet consectetur adipisicing elit. Aliquam necessitatibus
+                  earum quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem! Lorem ipsum, dolor sit amet
+                  consectetur adipisicing elit. Aliquam necessitatibus earum
+                  quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem!
                 </Typography>
               </Grid>
-              <Grid item className={classes.service_action}>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_action}`}
+              >
                 <Button>
                   Подробнее <ArrowRightAltIcon />{' '}
                 </Button>
@@ -169,23 +257,49 @@ const Services = () => {
             className={classes.wrapService}
           >
             <Grid container direction='column' className={classes.contService}>
-              <Grid item className={classes.service_icon}>
-                <Grid container justify='flex-end' alignItems='center'>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_icon}`}
+              >
+                <Grid container className={classes.service_icon_warap_svg}>
                   <Grid item>
                     <SVG_LipFour width={116} height={52} color={`#9CCE9B`} />
                   </Grid>
                 </Grid>
               </Grid>
-              <Grid item className={classes.service_header}>
-                <Typography variant='h1'>Контурная пластика</Typography>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_header}`}
+              >
+                <Typography variant='h2'>Контурная пластика</Typography>
               </Grid>
-              <Grid item className={classes.service_description}>
-                <Typography variant='body1' component='p'>
-                  Текст рыба, который написан для примера в несколько строк.
-                  Таким образом можно понять как работает контейнер...
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_description}`}
+              >
+                <Typography variant='h5'>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Aliquam necessitatibus earum quibusdam. Amet velit vel nemo
+                  veritatis, modi nostrum perspiciatis ab blanditiis aliquid sit
+                  dolor facilis dolores eius totam exercitationem! Lorem ipsum,
+                  dolor sit amet consectetur adipisicing elit. Aliquam
+                  necessitatibus earum quibusdam. Amet velit vel nemo veritatis,
+                  modi nostrum perspiciatis ab blanditiis aliquid sit dolor
+                  facilis dolores eius totam exercitationem! Lorem ipsum, dolor
+                  sit amet consectetur adipisicing elit. Aliquam necessitatibus
+                  earum quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem! Lorem ipsum, dolor sit amet
+                  consectetur adipisicing elit. Aliquam necessitatibus earum
+                  quibusdam. Amet velit vel nemo veritatis, modi nostrum
+                  perspiciatis ab blanditiis aliquid sit dolor facilis dolores
+                  eius totam exercitationem!
                 </Typography>
               </Grid>
-              <Grid item className={classes.service_action}>
+              <Grid
+                item
+                className={`${classes.item_article} ${classes.service_action}`}
+              >
                 <Button>
                   Подробнее <ArrowRightAltIcon />{' '}
                 </Button>
