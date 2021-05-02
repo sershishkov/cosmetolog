@@ -40,10 +40,10 @@ function Home({
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Invitation />
-      <Services />
-      <Expertise />
+      {/* <Services /> */}
+      {/* <Expertise />
       <Reviews />
-      <Blog />
+      <Blog /> */}
     </Grid>
   );
 }

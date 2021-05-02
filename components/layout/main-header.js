@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
+
 import Image from 'next/image';
 
 import { makeStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
-import Hidden from '@material-ui/core/Hidden';
+// import Hidden from '@material-ui/core/Hidden';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 // import Avatar from '@material-ui/core/Avatar';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+// import SVG_LogoColor from '../../assets/svg/SVG_LogoColor';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -34,7 +36,7 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import MoreIcon from '@material-ui/icons/More';
 import PhoneIcon from '@material-ui/icons/Phone';
 
-import Icon from '@material-ui/core/Icon';
+// import Icon from '@material-ui/core/Icon';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -51,13 +53,13 @@ function ElevationScroll(props) {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.common.white,
-    maxWidth: theme.breakpoints.width('xl'),
-
+    padding: 0,
+  },
+  Toolbar: {
     padding: 0,
   },
   appBarContainer: {
     backgroundColor: theme.palette.common.white,
-    // border: '1px solid #ff0000',
   },
   rowTop: {
     backgroundColor: 'rgba(255, 253, 250, 0.24)',
@@ -71,83 +73,94 @@ const useStyles = makeStyles((theme) => ({
   },
 
   logo: {
-    // border: '1px solid #ff0000',
-    height: '100%',
-    width: 200,
-    [theme.breakpoints.down('md')]: {
-      width: 80,
-    },
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   logo_menu_container: {
-    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+
   logo_img: {
-    height: '100%',
-    // border: '1px solid #ff0000',
-    [theme.breakpoints.down('md')]: {
-      position: 'absolute',
-      top: 10,
-      left: 'calc(50% - 60px)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    '& a': {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
-    '& img': {
-      height: 120,
-      width: 120,
-    },
+    '& img': {},
   },
-  logo_menu: {
-    // border: '1px solid #ff00ff',
+
+  logo_menu_drower_icon: {
+    display: 'none',
     height: '100%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       width: 60,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
   },
   logo_menu__button: {
-    marginTop: 20,
     fontSize: 28,
     color: theme.palette.common.colorGreen,
   },
 
   nav: {
-    marginLeft: 0,
-    // border: '1px solid #ff00ff',
-    height: '100%',
-    width: 700,
+    display: 'flex',
+
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
   nav_containerLink: {
-    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
-  nav_wrapLink: {
-    // border: '1px solid #00ff00',
-  },
+  nav_wrapLink: {},
   rowTop_wrapRight: {
-    height: '100%',
+    display: 'flex',
   },
   rowTop_containerRight: {
-    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
 
-  auth: {},
+  auth_logout: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  auth_login: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
   auth_button: {
     fontSize: 20,
     color: theme.palette.common.colorGreen,
   },
 
-  phoneMe: {
-    height: '100%',
-    marginRight: 5,
-  },
-  phoneMeContainer: {
-    // border: '1px solid #ff00ff',
-    height: '100%',
-    // width: 400,
-  },
+  phoneMe: {},
+  phoneMeContainer: {},
   phoneMe_phone: {
     '& span': {
       fontSize: 20,
       color: theme.palette.common.colorGreen,
     },
   },
-  phoneMe_phoneSelect: {},
+  phoneMe_phoneSelect: {
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
+  },
   phoneMe_phoneSelect__Select: {
     height: 30,
     fontSize: '1rem',
@@ -159,7 +172,11 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.common.white,
     },
   },
-  phoneMe_phoneWrap: {},
+  phoneMe_phoneWrap: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
   phoneMe_phoneButton: {
     backgroundColor: theme.palette.common.colorGreen,
     color: theme.palette.common.white,
@@ -174,26 +191,16 @@ const useStyles = makeStyles((theme) => ({
   rowBottom: {
     backgroundColor: 'transparent',
     height: 80,
-    // border: '1px solid #000',
   },
 
   listDrawer: {},
-  drawerItem: {
-    border: '1px solid #000',
-  },
-  drawerItem_wrapIcon: {
-    // border: '1px solid #ff0000',
-    // width: 28,
-    // paddingRight: 0,
-  },
+  drawerItem: {},
+  drawerItem_wrapIcon: {},
   drawerItem_icon: {
     fontSize: 28,
     color: theme.palette.common.colorGreen,
   },
-  drawerItem_text: {
-    // display: 'inline',
-    // margin: 'auto 3',
-  },
+  drawerItem_text: {},
 }));
 
 function MainHeader() {
@@ -486,49 +493,48 @@ function MainHeader() {
     <React.Fragment>
       <ElevationScroll>
         <AppBar position='fixed' className={classes.root}>
-          <Toolbar>
-            <Grid
-              container
-              direction='column'
-              justify='flex-start'
-              className={classes.appBarContainer}
-            >
-              <Grid
-                item
-                container
-                className={classes.rowTop}
-                direction='row'
-                justify='space-between'
-                alignItems='center'
-              >
-                <Grid item className={classes.rowTop_wrapLeft}>
-                  <Grid
-                    container
-                    className={classes.rowTop_containerLeft}
-                    direction='row'
-                    justify='flex-start'
-                    alignItems='center'
-                  >
-                    <Grid item className={classes.logo}>
-                      <Grid
-                        container
-                        direction='row'
-                        justify='center'
-                        alignItems='center'
-                        className={classes.logo_menu_container}
-                      >
-                        <Hidden mdUp>
-                          <Grid item container className={classes.logo_menu}>
-                            {my_drawer}
-                          </Grid>
-                        </Hidden>
-
-                        {/* <Hidden mdDown> */}
-                        <Grid item className={classes.logo_img}>
-                          <Link href='/'>
+          <Toolbar className={classes.Toolbar}>
+            <Grid container className={classes.appBarContainer}>
+              <Grid item container className={classes.rowTop}>
+                <Grid
+                  item
+                  lg={9}
+                  md={9}
+                  sm={8}
+                  xs={8}
+                  className={classes.rowTop_wrapLeft}
+                >
+                  <Grid container className={classes.rowTop_containerLeft}>
+                    <Grid
+                      item
+                      lg={2}
+                      md={2}
+                      sm={12}
+                      xs={12}
+                      className={classes.logo}
+                    >
+                      <Grid container className={classes.logo_menu_container}>
+                        <Grid
+                          item
+                          container
+                          className={classes.logo_menu_drower_icon}
+                          sm={6}
+                          xs={6}
+                        >
+                          {my_drawer}
+                        </Grid>
+                        <Grid
+                          item
+                          className={classes.logo_img}
+                          lg={12}
+                          md={12}
+                          sm={6}
+                          xs={6}
+                        >
+                          <Link href='/' className={classes.logo_Link}>
                             <a>
                               <img
-                                src='/images/logo/LogoColor.png'
+                                src='/images/logo/t_logo.png'
                                 alt='logo'
                                 style={{
                                   height: fullSizeLogo ? 120 : 88,
@@ -538,149 +544,137 @@ function MainHeader() {
                             </a>
                           </Link>
                         </Grid>
-                        {/* </Hidden> */}
                       </Grid>
                     </Grid>
 
-                    <Hidden mdDown>
-                      <Grid item className={classes.nav}>
-                        <Grid
-                          container
-                          direction='row'
-                          justify='space-between'
-                          alignItems='center'
-                          className={classes.nav_containerLink}
-                        >
-                          <Grid item className={classes.nav_wrapLink}>
-                            <Link href='/services'>
-                              <a>
-                                <Typography variant='h5'>Услуги</Typography>
-                              </a>
-                            </Link>
-                          </Grid>
-
-                          <Grid item className={classes.nav_wrapLink}>
-                            <Link href='/teaching'>
-                              <a>
-                                <Typography variant='h5'>Обучение</Typography>
-                              </a>
-                            </Link>
-                          </Grid>
-
-                          <Grid item className={classes.nav_wrapLink}>
-                            <Link href='/about-me'>
-                              <a>
-                                <Typography variant='h5'>Обо мне</Typography>
-                              </a>
-                            </Link>
-                          </Grid>
-                          <Grid item className={classes.nav_wrapLink}>
-                            <Link href='/reviews'>
-                              <a>
-                                <Typography variant='h5'>Отзывы</Typography>
-                              </a>
-                            </Link>
-                          </Grid>
-                          <Grid item className={classes.nav_wrapLink}>
-                            <Link href='/useful-info'>
-                              <a>
-                                <Typography variant='h5'>
-                                  Полезная информация
-                                </Typography>
-                              </a>
-                            </Link>
-                          </Grid>
-                          <Grid item className={classes.nav_wrapLink}>
-                            <Link href='/contacts'>
-                              <a>
-                                <Typography variant='h5'>Контакты</Typography>
-                              </a>
-                            </Link>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </Hidden>
-                  </Grid>
-                </Grid>
-                <Grid item className={classes.rowTop_wrapRight}>
-                  <Grid
-                    container
-                    className={classes.rowTop_containerRight}
-                    direction='row'
-                    justify='flex-end'
-                    alignItems='center'
-                  >
-                    <Grid item className={classes.auth}>
-                      {/* {user && (
-                <div>
-                  <Avatar src={user.picture} alt={user.name} />
-                  <Typography variant='body1'>{user.name}</Typography>
-
-                  <Link href='/api/auth/logout'>
-                    <a>
-                      <DirectionsRunIcon className={classes.auth_button} />
-                    </a>
-                  </Link>
-                </div>
-              )}
-              {!user && (
-                <Link href='/api/auth/login'>
-                  <a>
-                    <DirectionsRunIcon className={classes.auth_button} />
-                  </a>
-                </Link>
-              )} */}
-                    </Grid>
-                    <Grid item className={classes.phoneMe}>
-                      <Grid
-                        container
-                        className={classes.phoneMeContainer}
-                        direction='row'
-                        justify='space-between'
-                        alignItems='center'
-                        spacing={1}
-                      >
-                        <Grid item className={classes.phoneMe_phone}>
-                          <Link href={`tel:+${selectedPhone}`}>
+                    <Grid item lg={10} md={10} className={classes.nav}>
+                      <Grid container className={classes.nav_containerLink}>
+                        <Grid item className={classes.nav_wrapLink}>
+                          <Link href='/services'>
                             <a>
-                              <PhoneIcon className={classes.drawerItem_icon} />
+                              <Typography variant='h5'>Услуги</Typography>
                             </a>
                           </Link>
                         </Grid>
-                        <Hidden mdDown>
-                          <Grid item className={classes.phoneMe_phoneSelect}>
-                            <Select
-                              variant='outlined'
-                              labelId='phone-select-label'
-                              id='phone-select'
-                              value={selectedPhone}
-                              onChange={phoneChangeHandler}
-                              className={classes.phoneMe_phoneSelect__Select}
-                            >
-                              <MenuItem value={380679173017}>
-                                (067) 917-30-17
-                              </MenuItem>
-                              <MenuItem selected value={380679173030}>
-                                (067) 917-30-30
-                              </MenuItem>
-                              <MenuItem selected value={380679173040}>
-                                (067) 917-30-40
-                              </MenuItem>
-                            </Select>
-                          </Grid>
-                        </Hidden>
-                        <Hidden mdDown>
-                          <Grid item className={classes.phoneMe_phoneWrap}>
-                            <Button className={classes.phoneMe_phoneButton}>
-                              Позвони мне
-                            </Button>
-                          </Grid>
-                        </Hidden>
+
+                        <Grid item className={classes.nav_wrapLink}>
+                          <Link href='/teaching'>
+                            <a>
+                              <Typography variant='h5'>Обучение</Typography>
+                            </a>
+                          </Link>
+                        </Grid>
+
+                        <Grid item className={classes.nav_wrapLink}>
+                          <Link href='/about-me'>
+                            <a>
+                              <Typography variant='h5'>Обо мне</Typography>
+                            </a>
+                          </Link>
+                        </Grid>
+                        <Grid item className={classes.nav_wrapLink}>
+                          <Link href='/reviews'>
+                            <a>
+                              <Typography variant='h5'>Отзывы</Typography>
+                            </a>
+                          </Link>
+                        </Grid>
+                        <Grid item className={classes.nav_wrapLink}>
+                          <Link href='/useful-info'>
+                            <a>
+                              <Typography variant='h5'>
+                                Полезная информация
+                              </Typography>
+                            </a>
+                          </Link>
+                        </Grid>
+                        <Grid item className={classes.nav_wrapLink}>
+                          <Link href='/contacts'>
+                            <a>
+                              <Typography variant='h5'>Контакты</Typography>
+                            </a>
+                          </Link>
+                        </Grid>
                       </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid
+                  item
+                  lg={3}
+                  md={3}
+                  sm={4}
+                  xs={4}
+                  className={classes.rowTop_wrapRight}
+                >
+                  <Grid container className={classes.rowTop_containerRight}>
+                    {!user && (
+                      <Grid item className={classes.auth_login}>
+                        <Link href='/api/auth/login'>
+                          <a>
+                            <DirectionsRunIcon
+                              className={classes.auth_button}
+                            />
+                          </a>
+                        </Link>
+                      </Grid>
+                    )}
+
+                    {user && (
+                      <Grid item className={classes.auth_logout}>
+                        <div>
+                          <Avatar src={user.picture} alt={user.name} />
+                          <Typography variant='body1'>{user.name}</Typography>
+
+                          <Link href='/api/auth/logout'>
+                            <a>
+                              <DirectionsRunIcon
+                                className={classes.auth_button}
+                              />
+                            </a>
+                          </Link>
+                        </div>
+                      </Grid>
+                    )}
+
+                    <Grid item className={classes.phoneMe_phone}>
+                      <Link href={`tel:+${selectedPhone}`}>
+                        <a>
+                          <PhoneIcon className={classes.drawerItem_icon} />
+                        </a>
+                      </Link>
+                    </Grid>
+
+                    <Grid item className={classes.phoneMe_phoneSelect}>
+                      <Select
+                        variant='outlined'
+                        labelId='phone-select-label'
+                        id='phone-select'
+                        value={selectedPhone}
+                        onChange={phoneChangeHandler}
+                        className={classes.phoneMe_phoneSelect__Select}
+                      >
+                        <MenuItem value={380679173017}>
+                          (067) 917-30-17
+                        </MenuItem>
+                        <MenuItem selected value={380679173030}>
+                          (067) 917-30-30
+                        </MenuItem>
+                        <MenuItem selected value={380679173040}>
+                          (067) 917-30-40
+                        </MenuItem>
+                      </Select>
+                    </Grid>
+
+                    <Grid item className={classes.phoneMe_phoneWrap}>
+                      <Button className={classes.phoneMe_phoneButton}>
+                        Позвони мне
+                      </Button>
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
+
               <Grid
                 item
                 container

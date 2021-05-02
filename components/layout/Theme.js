@@ -21,15 +21,15 @@ const color_Body1 = '#272420';
 const color_Body2 = '#272420';
 
 const colorBlack = '#030200';
-const colorWhite = '#FFFFFF';
+const colorWhite = '#FFFDFA';
 const colorGreen = '#9CCE9B';
 
-const fontSize_12 = '0.75rem';
-const fontSize_16 = '1rem';
-const fontSize_20 = '1.25rem';
-const fontSize_28 = '1.75rem';
-const fontSize_32 = '2rem';
-const fontSize_44 = '2.75rem';
+const fontSize_12 = '1.2rem';
+const fontSize_16 = '1.6rem';
+const fontSize_20 = '2rem';
+const fontSize_28 = '2.8rem';
+const fontSize_32 = '3.2rem';
+const fontSize_44 = '4.4rem';
 
 export default createMuiTheme({
   palette: {
@@ -67,65 +67,65 @@ export default createMuiTheme({
     h1: {
       fontFamily: 'Noto Serif',
       fontStyle: 'normal',
-      fontWeight: 700,
-      fontSize: fontSize_44, //'44px',
-      lineHeight: fontSize_44,
+      // fontWeight: 700,
+      // fontSize: fontSize_44, //'44px',
+      // lineHeight: fontSize_44,
       color: color_H1,
     },
     h2: {
       fontFamily: 'Noto Serif',
       fontStyle: 'normal',
-      fontWeight: 700,
-      fontSize: fontSize_32,
-      lineHeight: fontSize_32,
+      // fontWeight: 700,
+      // fontSize: fontSize_32,
+      // lineHeight: fontSize_32,
       color: color_H2,
     },
     h3: {
       fontFamily: 'Open Sans',
       fontStyle: 'normal',
-      fontWeight: 600,
-      fontSize: fontSize_28,
-      lineHeight: fontSize_28,
+      // fontWeight: 600,
+      // fontSize: fontSize_28,
+      // lineHeight: fontSize_28,
       color: color_H3,
     },
     h4: {
       fontFamily: 'Open Sans',
       fontStyle: 'normal',
-      fontWeight: 500,
-      fontSize: fontSize_20,
-      lineHeight: fontSize_20,
+      // fontWeight: 500,
+      // fontSize: fontSize_20,
+      // lineHeight: fontSize_20,
       color: color_H4,
     },
     h5: {
       fontFamily: 'Open Sans',
       fontStyle: 'normal',
-      fontWeight: 400,
-      fontSize: fontSize_16,
-      lineHeight: fontSize_16,
+      // fontWeight: 400,
+      // fontSize: fontSize_16,
+      // lineHeight: fontSize_16,
       color: color_H5,
     },
     h6: {
       fontFamily: 'Open Sans',
       fontStyle: 'normal',
-      fontWeight: 300,
-      fontSize: fontSize_12,
-      lineHeight: fontSize_12,
+      // fontWeight: 300,
+      // fontSize: fontSize_12,
+      // lineHeight: fontSize_12,
       color: color_H6,
     },
     body1: {
       fontFamily: 'Open Sans',
       fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: fontSize_16,
-      lineHeight: fontSize_16,
+      // fontWeight: 'normal',
+      // fontSize: fontSize_16,
+      // lineHeight: fontSize_16,
       color: color_Body1,
     },
     body2: {
       fontFamily: 'Open Sans',
       fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: fontSize_12,
-      lineHeight: fontSize_12,
+      // fontWeight: 'normal',
+      // fontSize: fontSize_12,
+      // lineHeight: fontSize_12,
       color: color_Body2,
     },
     subtitle1: {},

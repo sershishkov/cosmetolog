@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { makeStyles, useTheme } from '@material-ui/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.common.white,
     height: 918,
     overflow: 'hidden',
-    maxWidth: theme.breakpoints.width('lg'),
+    [theme.breakpoints.down('lg')]: {},
+    // width: '100%',
   },
   Button: {
     backgroundColor: theme.palette.common.colorGreen,
@@ -29,7 +30,23 @@ const useStyles = makeStyles((theme) => ({
   },
   contInvite: {
     height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
+  contInvite__item: {
+    width: '90%',
+    margin: '20px 0px',
+    '& p': {
+      display: '-webkit-box',
+      '-webkit-line-clamp': 4 /* количество строк */,
+      '-webkit-box-orient': 'vertical',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    },
+  },
+
   wrapPhoto: {
     position: 'relative',
     height: '100%',
@@ -54,37 +71,39 @@ const useStyles = makeStyles((theme) => ({
 
 const Invitation = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  // const theme = useTheme();
+  // const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  // const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Grid container className={classes.root}>
-      <Grid item sm={12} md={6} className={classes.wrapInvite}>
-        <Grid
-          container
-          direction='column'
-          justify='center'
-          alignItems='flex-start'
-          spacing={2}
-          className={classes.contInvite}
-        >
-          <Grid item>
+      <Grid item xm={12} sm={12} md={6} lg={6} className={classes.wrapInvite}>
+        <Grid container className={classes.contInvite}>
+          <Grid item className={classes.contInvite__item}>
             <Typography variant='h1'>Элла Тодосиенко</Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.contInvite__item}>
             <Typography variant='body1' component='p'>
               Частный косметолог с более чем 30 годами международного
               опыта,Частный косметолог с более чем 30 годами международного
-              опыта
+              опыта Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
+              dicta. Tenetur obcaecati consequatur optio commodi similique
+              fugiat, ex in fugit officia harum consectetur illum, aliquam
+              accusantium explicabo quibusdam modi voluptate! Частный косметолог
+              с более чем 30 годами международного опыта,Частный косметолог с
+              более чем 30 годами международного опыта Lorem ipsum dolor sit
+              amet consectetur adipisicing elit. Ab, dicta. Tenetur obcaecati
+              consequatur optio commodi similique fugiat, ex in fugit officia
+              harum consectetur illum, aliquam accusantium explicabo quibusdam
+              modi voluptate!
             </Typography>
           </Grid>
-          <Grid item>
+          <Grid item className={classes.contInvite__item}>
             <Button className={classes.Button}>Записаться на приём</Button>
           </Grid>
         </Grid>
       </Grid>
-      <Grid item sm={12} md={6} className={classes.wrapPhoto}>
+      <Grid item xm={12} sm={12} md={6} lg={6} className={classes.wrapPhoto}>
         <img src='/images/home/invitation.jpg' alt='invitation' />
         <div className={classes.wrapPhoto_Gradient}></div>
       </Grid>

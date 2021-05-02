@@ -11,63 +11,106 @@ import PhoneIcon from '@material-ui/icons/Phone';
 const useStyles = makeStyles((theme) => ({
   footer: {
     maxWidth: theme.breakpoints.width('xl'),
-    // border: '1px solid #f00',
     backgroundColor: theme.palette.common.white,
     height: 264,
+    padding: 0,
+    marginTop: '2rem',
   },
-  footer_Item: {},
+  footerContainer: {
+    margin: 'auto',
+    height: '100%',
+    maxWidth: theme.breakpoints.width('lg'),
+    backgroundColor: theme.palette.common.white,
+  },
+  footer_Item_left: {
+    height: '100%',
+    width: '100%',
+  },
+  footer_Item_right: {
+    height: '100%',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
+  footer_contContacts: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'flex-start',
+    [theme.breakpoints.down('sm')]: {
+      alignItems: 'center',
+    },
+  },
+
   footer_contContacts_phones: {},
   footer_contContacts_phonesCont: {},
   footer_contContacts_phonesCont_item: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     '& img': {
       width: 20,
       height: 20,
-      marginRight: 5,
-      marginLeft: 5,
+      marginRight: 10,
+      marginLeft: 10,
     },
   },
   drawerItem_icon: {
     fontSize: 20,
     color: theme.palette.common.colorGreen,
   },
+  wrapSocial_icons: {
+    width: '100%',
+  },
+  contSocial_icons: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
+  },
+  icon_item: {
+    margin: '0px 10px',
+  },
+
+  footer_contMap: {
+    height: '100%',
+  },
+  footer_contMap_wrapImg: {
+    display: 'flex',
+    width: '100%',
+    height: '100%',
+  },
+  footer_contMap_wrapImg: {
+    display: 'flex',
+    width: '100%',
+    height: '100%',
+  },
   footer_contMap_wrapImg_img: {
     width: '100%',
     height: '100%',
-    overflow: 'hidden',
-    '& img': {
-      width: '100%',
-      height: '100%',
-    },
   },
 }));
 
 function MainFooter() {
   const classes = useStyles();
   return (
-    <footer>
-      <Grid
-        container
-        direction='row'
-        justify='space-between'
-        alignItems='center'
-        className={classes.footer}
-      >
+    <footer className={classes.footer}>
+      <Grid container className={classes.footerContainer}>
         <Grid
           item
-          sm={6}
-          className={classes.footer_Item}
-          style={{ height: '100%' }}
+          lg={6}
+          md={6}
+          sm={12}
+          xm={12}
+          className={classes.footer_Item_left}
         >
-          <Grid
-            container
-            direction='column'
-            justify='space-around'
-            alignItems='flex-start'
-            className={classes.footer_contContacts}
-            style={{ height: '100%' }}
-          >
+          <Grid container className={classes.footer_contContacts}>
             <Grid item>
-              <Typography variant='h1'>Контакты</Typography>
+              <Typography variant='h2'>Контакты</Typography>
             </Grid>
             <Grid item>
               <Typography variant='body1'>
@@ -125,14 +168,9 @@ function MainFooter() {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item style={{ width: '100%' }}>
-              <Grid
-                container
-                justify='flex-start'
-                spacing={2}
-                style={{ width: '100%' }}
-              >
-                <Grid item>
+            <Grid item className={classes.wrapSocial_icons}>
+              <Grid container className={classes.contSocial_icons}>
+                <Grid item className={classes.icon_item}>
                   <Link href='/'>
                     <a>
                       <Icon
@@ -141,7 +179,7 @@ function MainFooter() {
                     </a>
                   </Link>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.icon_item}>
                   <Link href='/'>
                     <a>
                       <Icon
@@ -150,7 +188,7 @@ function MainFooter() {
                     </a>
                   </Link>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.icon_item}>
                   <Link href='/'>
                     <a>
                       <Icon
@@ -159,7 +197,7 @@ function MainFooter() {
                     </a>
                   </Link>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.icon_item}>
                   <Link href='/'>
                     <a>
                       <Icon
@@ -168,7 +206,7 @@ function MainFooter() {
                     </a>
                   </Link>
                 </Grid>
-                <Grid item>
+                <Grid item className={classes.icon_item}>
                   <Link href='/'>
                     <a>
                       <Icon
@@ -181,14 +219,15 @@ function MainFooter() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item sm={6} className={classes.footer_Item}>
-          <Grid
-            container
-            direction='column'
-            justify='center'
-            alignItems='center'
-            className={classes.footer_contMap}
-          >
+        <Grid
+          item
+          lg={6}
+          md={6}
+          sm={12}
+          xm={12}
+          className={classes.footer_Item_right}
+        >
+          <Grid container className={classes.footer_contMap}>
             <Grid item className={classes.footer_contMap_wrapImg}>
               <img
                 src='/images/footer/map.png'
