@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { makeStyles, useTheme } from '@material-ui/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+// import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
@@ -53,9 +53,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Services = () => {
   const classes = useStyles();
-  const theme = useTheme();
-  const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
-  const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
+  // const theme = useTheme();
+  // const matchesMD = useMediaQuery(theme.breakpoints.down('md'));
+  // const matchesSM = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <Grid container direction='column' className={classes.root}>

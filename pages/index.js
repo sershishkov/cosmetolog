@@ -41,9 +41,9 @@ function Home({
       </Head>
       <Invitation />
       <Services />
-      {/* <Expertise />
-      <Reviews />
-      <Blog /> */}
+      <Expertise />
+      {/* <Reviews /> */}
+      {/* <Blog /> */}
     </Grid>
   );
 }
