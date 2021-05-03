@@ -23,7 +23,7 @@ const photos = [
 
 const useStyles = makeStyles((theme) => ({
   myContainer: {
-    width: 500,
+    // width: 500,
     height: '100%',
   },
   myWrapper: {
@@ -94,10 +94,13 @@ export const mySwiper = new Swiper('.swiper-container', {
   },
 });
 
-const CarouselSwiper = () => {
+const CarouselSwiper = (props) => {
   const classes = useStyles();
   return (
-    <div className={`swiper-container ${classes.myContainer}`}>
+    <div
+      className={`swiper-container ${classes.myContainer}`}
+      style={{ width: props.width }}
+    >
       <div className={`swiper-wrapper ${classes.myWrapper}`}>
         {photos.map((item) => (
           <div
@@ -107,25 +110,15 @@ const CarouselSwiper = () => {
             <img src={item.imageUrl} alt={item.imageAlt} />
           </div>
         ))}
-
-        {/* <div className={`swiper-slide ${classes.mySwiperSlide}`}>
-          <img src='/images/expertise/001.jpg' alt='' />
-        </div>
-        <div className={`swiper-slide ${classes.mySwiperSlide}`}>
-          <img src='/images/home/invitation.jpg' alt='' />
-        </div>
-        <div className={`swiper-slide ${classes.mySwiperSlide}`}>
-          <img src='/images/home/invitation.jpg' alt='' />
-        </div> */}
       </div>
       {/* <!-- If we need pagination --> */}
-      <div class={`swiper-pagination ${classes.myPagination}`}></div>
+      <div className={`swiper-pagination ${classes.myPagination}`}></div>
       {/* <!-- If we need navigation buttons --> */}
-      <div class={`swiper-button-prev ${classes.mySwiperButton}`}></div>
-      <div class={`swiper-button-next ${classes.mySwiperButton}`}></div>
+      <div className={`swiper-button-prev ${classes.mySwiperButton}`}></div>
+      <div className={`swiper-button-next ${classes.mySwiperButton}`}></div>
 
       {/* <!-- If we need scrollbar --> */}
-      <div class={`swiper-scrollbar ${classes.mySwiperScrollBar}`}></div>
+      <div className={`swiper-scrollbar ${classes.mySwiperScrollBar}`}></div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ function Home({
       <Invitation />
       <Services />
       <Expertise />
-      {/* <Reviews /> */}
+      <Reviews />
       {/* <Blog /> */}
     </Grid>
   );

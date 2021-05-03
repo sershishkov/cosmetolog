@@ -100,7 +100,7 @@ const Expertise = () => {
             lg={6}
             className={`${classes.mainItem} ${classes.mainItem_slider}`}
           >
-            <CarouselSwiper />
+            <CarouselSwiper width={500} />
           </Grid>
           <Grid
             item
