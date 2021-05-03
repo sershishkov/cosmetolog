@@ -43,7 +43,7 @@ function Home({
       <Services />
       <Expertise />
       <Reviews />
-      {/* <Blog /> */}
+      <Blog />
     </Grid>
   );
 }

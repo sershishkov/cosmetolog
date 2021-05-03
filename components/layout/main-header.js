@@ -201,6 +201,31 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.common.colorGreen,
   },
   drawerItem_text: {},
+  fixedButton: {
+    position: 'fixed',
+    width: 251,
+    height: 64,
+    right: -64,
+    top: 379,
+    background: '#E8E1D0',
+    borderRadius: '16px 16px 0px 0px ',
+    // display: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    '& a': {
+      fonFamily: 'Open Sans',
+      fontStyle: 'normal',
+      fontWeight: 600,
+      fontSize: '1.6rem',
+      lineHeight: '2.4rem',
+      color: ' #928B78',
+    },
+    transform: 'rotate(-90deg)',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
 }));
 
 function MainHeader() {
@@ -495,6 +520,9 @@ function MainHeader() {
         <AppBar position='fixed' className={classes.root}>
           <Toolbar className={classes.Toolbar}>
             <Grid container className={classes.appBarContainer}>
+              <div className={classes.fixedButton}>
+                <Link href='/'>Записаться на прием</Link>
+              </div>
               <Grid item container className={classes.rowTop}>
                 <Grid
                   item
