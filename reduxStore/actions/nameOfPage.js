@@ -1,8 +1,8 @@
-import { NAME_OF_PAGE } from '../types';
+import { nameOfPage__Actions } from '../reducers/nameOfPage';
+
+// import { setAlert } from './alert';
 
 export const setNameOfPage = (pageName) => (dispatch) => {
-  dispatch({
-    type: NAME_OF_PAGE,
-    payload: pageName,
-  });
+  dispatch(nameOfPage__Actions.setPage({ pageName }));
+  // dispatch(setAlert(`Cтраница: ${pageName}`, 'success'));
 };

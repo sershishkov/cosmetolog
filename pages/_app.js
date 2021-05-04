@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from '../components/layout/Theme';
 import { Provider as ReduxProvider } from 'react-redux';
-import store from '../reduxStore/store';
+import store from '../reduxStore/index';
 
 import Layout from '../components/layout/layout';
 

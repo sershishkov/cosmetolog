@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { setNameOfPage } from '../reduxStore/actions/nameOfPage';
 
 import { makeStyles } from '@material-ui/styles';
@@ -19,15 +19,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home({
-  setNameOfPage,
-
-  state__nameOfPage,
-}) {
+function Home() {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  // const state__nameOfPage = useSelector((state) => state.nameOfPage.pageName);
+
   useEffect(() => {
-    setNameOfPage('this is main page from state redux');
-  }, [setNameOfPage]);
+    dispatch(setNameOfPage('this is main page from state redux'));
+  }, [dispatch]);
   return (
     <Grid
       container
@@ -48,16 +47,9 @@ function Home({
   );
 }
 
-Home.propTypes = {
-  setNameOfPage: PropTypes.func.isRequired,
+// Home.propTypes = {
+//   setNameOfPage: PropTypes.func.isRequired,
+//   state__nameOfPage: PropTypes.string.isRequired,
+// };
 
-  state__nameOfPage: PropTypes.object.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  state__nameOfPage: state.nameOfPage,
-});
-
-export default connect(mapStateToProps, {
-  setNameOfPage,
-})(Home);
+export default Home;

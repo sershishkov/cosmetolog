@@ -6,7 +6,7 @@ import SwiperCore, { Navigation, Pagination } from 'swiper/core';
 import { makeStyles } from '@material-ui/styles';
 
 const photos = [
-  { imageUrl: '/images/expertise/001.jpg', imageAlt: 'certificate' },
+  // { imageUrl: '/images/expertise/001.jpg', imageAlt: 'certificate' },
   { imageUrl: '/images/expertise/002.jpg', imageAlt: 'certificate' },
   { imageUrl: '/images/expertise/003.jpg', imageAlt: 'certificate' },
   { imageUrl: '/images/expertise/004.jpg', imageAlt: 'certificate' },
@@ -18,7 +18,7 @@ const photos = [
   { imageUrl: '/images/expertise/010.jpg', imageAlt: 'certificate' },
   { imageUrl: '/images/expertise/011.jpg', imageAlt: 'certificate' },
   { imageUrl: '/images/expertise/012.jpg', imageAlt: 'certificate' },
-  { imageUrl: '/images/expertise/013.jpg', imageAlt: 'certificate' },
+  // { imageUrl: '/images/expertise/013.jpg', imageAlt: 'certificate' },
 ];
 
 const useStyles = makeStyles((theme) => ({

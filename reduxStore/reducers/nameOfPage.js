@@ -1,24 +1,19 @@
-import { NAME_OF_PAGE } from '../types';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   pageName: '',
-  loading: true,
 };
 
-const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
+const nameOfPage__Slice = createSlice({
+  name: 'nameOfPage__Slice',
+  initialState,
+  reducers: {
+    setPage(state, action) {
+      state.pageName = action.payload.pageName;
+    },
+  },
+});
 
-  switch (type) {
-    case NAME_OF_PAGE:
-      return {
-        ...state,
-        pageName: payload,
-        loading: false,
-      };
+export const nameOfPage__Actions = nameOfPage__Slice.actions;
 
-    default:
-      return state;
-  }
-};
-
-export default reducer;
+export default nameOfPage__Slice.reducer;

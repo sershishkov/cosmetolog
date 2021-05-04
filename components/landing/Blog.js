@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   wrapImage: {
     height: '100%',
     width: '100%',
-    borderRadius: 35,
+
     '& img': {
       height: '100%',
       width: '100%',

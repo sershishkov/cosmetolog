@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 
-import Image from 'next/image';
-
 import { makeStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
-// import Hidden from '@material-ui/core/Hidden';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -18,7 +15,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
-// import SVG_LogoColor from '../../assets/svg/SVG_LogoColor';
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -36,7 +32,10 @@ import ContactsIcon from '@material-ui/icons/Contacts';
 import MoreIcon from '@material-ui/icons/More';
 import PhoneIcon from '@material-ui/icons/Phone';
 
-// import Icon from '@material-ui/core/Icon';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -109,6 +108,11 @@ const useStyles = makeStyles((theme) => ({
   logo_menu__button: {
     fontSize: 28,
     color: theme.palette.common.colorGreen,
+  },
+  drawer2: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
   },
 
   nav: {
@@ -193,8 +197,15 @@ const useStyles = makeStyles((theme) => ({
     height: 80,
   },
 
-  listDrawer: {},
-  drawerItem: {},
+  listDrawer: {
+    [theme.breakpoints.up('md')]: {
+      width: 400,
+      fontSize: '2rem',
+    },
+  },
+  drawerItem: {
+    width: '100%',
+  },
   drawerItem_wrapIcon: {},
   drawerItem_icon: {
     fontSize: 28,
@@ -226,6 +237,19 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  accordion: {},
+  accordionSummary: {},
+  accordionSummaryHeading: {
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2rem',
+    },
+  },
+  accordionSummaryDetails: {},
+  listAccoprdion: {
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2rem',
+    },
+  },
 }));
 
 function MainHeader() {
@@ -254,71 +278,102 @@ function MainHeader() {
         onOpen={() => setOpenDrawer(true)}
       >
         <List disablePadding className={classes.listDrawer}>
-          <ListItem
-            divider
-            button
-            onClick={() => {
-              setOpenDrawer(false);
-            }}
-            className={classes.drawerItem}
-            // style={{
-            //   display: state_auth.isAuthenticated ? 'none' : undefined,
-            // }}
-          >
-            {/* <Link href='/api/auth/login'> */}
-            <Link href='/'>
-              <a>
-                <Grid container justify='flex-start' alignItems='center'>
-                  <Grid item>
-                    <ListItemIcon className={classes.drawerItem_wrapIcon}>
-                      <ExitToAppIcon className={classes.drawerItem_icon} />
-                    </ListItemIcon>
+          {!user && (
+            <ListItem
+              divider
+              button
+              onClick={() => {
+                setOpenDrawer(false);
+              }}
+              className={classes.drawerItem}
+            >
+              <Link href='/api/auth/login'>
+                <a>
+                  <Grid container justify='flex-start' alignItems='center'>
+                    <Grid item>
+                      <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                        <ExitToAppIcon className={classes.drawerItem_icon} />
+                      </ListItemIcon>
+                    </Grid>
+                    <Grid item>
+                      <ListItemText
+                        disableTypography
+                        className={classes.drawerItem_text}
+                      >
+                        Вход
+                      </ListItemText>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <ListItemText
-                      disableTypography
-                      className={classes.drawerItem_text}
-                    >
-                      Вход
-                    </ListItemText>
-                  </Grid>
-                </Grid>
-              </a>
-            </Link>
-          </ListItem>
+                </a>
+              </Link>
+            </ListItem>
+          )}
 
-          <ListItem
-            divider
-            button
-            onClick={() => {
-              setOpenDrawer(false);
-            }}
-            className={classes.drawerItem}
-            // style={{
-            //   display: state_auth.isAuthenticated ? 'none' : undefined,
-            // }}
-          >
-            {/* <Link href='/api/auth/logout'> */}
-            <Link href='/'>
-              <a>
-                <Grid container justify='flex-start' alignItems='center'>
-                  <Grid item>
-                    <ListItemIcon className={classes.drawerItem_wrapIcon}>
-                      <DirectionsRunIcon className={classes.drawerItem_icon} />
-                    </ListItemIcon>
+          {user && (
+            <ListItem
+              divider
+              button
+              onClick={() => {
+                setOpenDrawer(false);
+              }}
+              className={classes.drawerItem}
+            >
+              <Link href='/api/auth/logout'>
+                <a>
+                  <Grid container justify='flex-start' alignItems='center'>
+                    <Grid item>
+                      <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                        <DirectionsRunIcon
+                          className={classes.drawerItem_icon}
+                        />
+                      </ListItemIcon>
+                    </Grid>
+                    <Grid item>
+                      <ListItemText
+                        disableTypography
+                        className={classes.drawerItem_text}
+                      >
+                        Выход
+                      </ListItemText>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <ListItemText
-                      disableTypography
-                      className={classes.drawerItem_text}
-                    >
-                      Выход
-                    </ListItemText>
+                </a>
+              </Link>
+            </ListItem>
+          )}
+
+          {user && (
+            <ListItem
+              divider
+              button
+              onClick={() => {
+                setOpenDrawer(false);
+              }}
+              className={classes.drawerItem}
+            >
+              <Link href='/my-office'>
+                <a>
+                  <Grid container justify='flex-start' alignItems='center'>
+                    <Grid item>
+                      <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                        <DirectionsRunIcon
+                          className={classes.drawerItem_icon}
+                        />
+                      </ListItemIcon>
+                    </Grid>
+                    <Grid item>
+                      <ListItemText
+                        disableTypography
+                        className={classes.drawerItem_text}
+                      >
+                        Мой кабинет
+                      </ListItemText>
+                    </Grid>
                   </Grid>
-                </Grid>
-              </a>
-            </Link>
-          </ListItem>
+                </a>
+              </Link>
+            </ListItem>
+          )}
 
           <ListItem
             divider
@@ -494,6 +549,253 @@ function MainHeader() {
             </Link>
           </ListItem>
         </List>
+        <Accordion className={classes.accordion}>
+          <AccordionSummary
+            expandIcon={<ExpandMore />}
+            aria-controls={`user-admin-free-content`}
+            id={`user-admin-free-header`}
+            className={classes.accordionSummary}
+          >
+            <Typography className={classes.accordionSummaryHeading}>
+              Админка
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails className={classes.accordionSummaryDetails}>
+            <List disablePadding className={classes.listAccoprdion}>
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/users'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Клиенты
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/services'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Услуги
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/procedures'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Процедуры
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/keywords'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Ключевые слова
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/faqs'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Вопросы и Ответы
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/comments'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Комментарии
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/articles'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Статьи
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+
+              <ListItem
+                divider
+                button
+                onClick={() => {
+                  setOpenDrawer(false);
+                }}
+                className={classes.drawerItem}
+              >
+                <Link href='/admin/reviews'>
+                  <a>
+                    <Grid container justify='flex-start' alignItems='center'>
+                      <Grid item>
+                        <ListItemIcon className={classes.drawerItem_wrapIcon}>
+                          <ContactsIcon className={classes.drawerItem_icon} />
+                        </ListItemIcon>
+                      </Grid>
+                      <Grid item>
+                        <ListItemText
+                          disableTypography
+                          className={classes.drawerItem_text}
+                        >
+                          Отзывы
+                        </ListItemText>
+                      </Grid>
+                    </Grid>
+                  </a>
+                </Link>
+              </ListItem>
+            </List>
+          </AccordionDetails>
+        </Accordion>
       </SwipeableDrawer>
 
       <Tooltip title='Меню'>
@@ -636,7 +938,12 @@ function MainHeader() {
                   className={classes.rowTop_wrapRight}
                 >
                   <Grid container className={classes.rowTop_containerRight}>
-                    {!user && (
+                    {user && (
+                      <Grid item className={classes.drawer2}>
+                        {my_drawer}
+                      </Grid>
+                    )}
+                    {/* {!user && (
                       <Grid item className={classes.auth_login}>
                         <Link href='/api/auth/login'>
                           <a>
@@ -646,9 +953,9 @@ function MainHeader() {
                           </a>
                         </Link>
                       </Grid>
-                    )}
+                    )} */}
 
-                    {user && (
+                    {/* {user && (
                       <Grid item className={classes.auth_logout}>
                         <div>
                           <Avatar src={user.picture} alt={user.name} />
@@ -663,7 +970,7 @@ function MainHeader() {
                           </Link>
                         </div>
                       </Grid>
-                    )}
+                    )} */}
 
                     <Grid item className={classes.phoneMe_phone}>
                       <Link href={`tel:+${selectedPhone}`}>

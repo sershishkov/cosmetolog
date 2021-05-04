@@ -1,12 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import Carousel from 'react-material-ui-carousel';
 
-import { makeStyles, useTheme } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import Button from '@material-ui/core/Button';
 
-import CarouselSwiper, { mySwiper } from './CarouselSwiper';
+const photos = [
+  { imageUrl: '/images/expertise/001.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/002.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/003.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/004.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/005.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/006.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/007.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/008.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/009.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/010.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/011.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/012.jpg', imageAlt: 'certificate' },
+  { imageUrl: '/images/expertise/013.jpg', imageAlt: 'certificate' },
+];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,12 +35,12 @@ const useStyles = makeStyles((theme) => ({
   },
   rootItem__main: {},
   contMain: {
-    width: '100%',
+    // width: '100%',
   },
   mainItem: {},
   mainItem_slider: {
     height: 700,
-    height: '100%',
+    // height: '100%',
     [theme.breakpoints.down('sm')]: {
       height: 700,
     },
@@ -77,13 +92,30 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  carouselContainer: {
+    width: '100%',
+    maxWidth: 650,
+    display: 'flex',
+    height: 700,
+    [theme.breakpoints.down('sm')]: {
+      height: 300,
+    },
+  },
+  carouselItem: {
+    // width: '100%',
+    // height: '100%',
+    '& img': {
+      width: '100%',
+      height: '100%',
+      // height: 'auto',
+      // objectFit: 'cover',
+    },
+  },
 }));
 
 const Expertise = () => {
   const classes = useStyles();
-  useEffect(() => {
-    mySwiper.init();
-  }, [mySwiper]);
+
   return (
     <Grid container className={classes.root}>
       <Grid item className={`${classes.rootItem} ${classes.rootItem__header}`}>
@@ -100,7 +132,15 @@ const Expertise = () => {
             lg={6}
             className={`${classes.mainItem} ${classes.mainItem_slider}`}
           >
-            <CarouselSwiper width={500} />
+            <Carousel>
+              {photos.map((item, i) => (
+                <Grid key={i} container className={classes.carouselContainer}>
+                  <Grid item className={classes.carouselItem}>
+                    <img src={item.imageUrl} alt={item.imageAlt} />
+                  </Grid>
+                </Grid>
+              ))}
+            </Carousel>
           </Grid>
           <Grid
             item

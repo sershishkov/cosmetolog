@@ -1,18 +1,24 @@
-import { SET_ALERT, REMOVE_ALERT } from '../types';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
-
-const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case SET_ALERT:
-      return [...state, payload];
-    case REMOVE_ALERT:
-      return state.filter((alert) => alert.id !== payload);
-    default:
-      return state;
-  }
+const initialState = {
+  arrayAllerts: [],
 };
 
-export default reducer;
+const alert__Slice = createSlice({
+  name: 'alert__Slice',
+  initialState,
+  reducers: {
+    setAlert(state, action) {
+      state.arrayAllerts = [...state.arrayAllerts, action.payload];
+    },
+    removeAlert(state, action) {
+      state.arrayAllerts = state.arrayAllerts.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
+  },
+});
+
+export const alert__Actions = alert__Slice.actions;
+
+export default alert__Slice.reducer;

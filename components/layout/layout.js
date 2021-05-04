@@ -1,5 +1,6 @@
 import MainHeader from './main-header';
 import MainFooter from './main-footer';
+import AlertCustom from './AlertCustom';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -27,6 +28,7 @@ function Layout(props) {
     <Container className={classes.layoutContainer}>
       <MainHeader />
       <Grid>
+        <AlertCustom />
         <main className={classes.main}>{props.children}</main>
       </Grid>
       <MainFooter />
