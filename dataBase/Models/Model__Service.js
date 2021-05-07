@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ServiceSchema = new mongoose.Schema({
+const Model__Service = new mongoose.Schema({
   metaTitle: {
     type: String,
   },
@@ -52,4 +52,4 @@ const ServiceSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Service', ServiceSchema);
+export default mongoose.model('Service', Model__Service);

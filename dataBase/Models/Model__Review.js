@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ReviewSchema = new mongoose.Schema({
+const Model__Review = new mongoose.Schema({
   reviewText: {
     type: String,
   },
@@ -10,4 +10,4 @@ const ReviewSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Review', ReviewSchema);
+export default mongoose.model('Review', Model__Review);

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ProcedureSchema = new mongoose.Schema({
+const Model__Article = new mongoose.Schema({
   metaTitle: {
     type: String,
   },
@@ -32,4 +32,4 @@ const ProcedureSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Procedure', ProcedureSchema);
+export default mongoose.model('Article', Model__Article);

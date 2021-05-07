@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ReviewSchema = new mongoose.Schema({
+const Model__Faq = new mongoose.Schema({
   metaTitle: {
     type: String,
   },
@@ -19,4 +19,4 @@ const ReviewSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Review', ReviewSchema);
+export default mongoose.model('Review', Model__Faq);

@@ -198,6 +198,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   listDrawer: {
+    width: '95%',
+    maxWidth: 400,
+    fontSize: '2rem',
     [theme.breakpoints.up('md')]: {
       width: 400,
       fontSize: '2rem',
@@ -943,7 +946,7 @@ function MainHeader() {
                         {my_drawer}
                       </Grid>
                     )}
-                    {/* {!user && (
+                    {!user && (
                       <Grid item className={classes.auth_login}>
                         <Link href='/api/auth/login'>
                           <a>
@@ -953,7 +956,18 @@ function MainHeader() {
                           </a>
                         </Link>
                       </Grid>
-                    )} */}
+                    )}
+                    {user && (
+                      <Grid item className={classes.auth_login}>
+                        <Link href='/api/auth/logout'>
+                          <a>
+                            <DirectionsRunIcon
+                              className={classes.auth_button}
+                            />
+                          </a>
+                        </Link>
+                      </Grid>
+                    )}
 
                     {/* {user && (
                       <Grid item className={classes.auth_logout}>
