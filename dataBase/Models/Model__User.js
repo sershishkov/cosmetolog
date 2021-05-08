@@ -72,4 +72,12 @@ const Model__User = new mongoose.Schema({
 //   return await bcrypt.compare(enteredPassword, this.password);
 // };
 
-export default mongoose.model('User', Model__User);
+let Export__User;
+
+if (mongoose.models.User) {
+  Export__User = mongoose.model('User');
+} else {
+  Export__User = mongoose.model('User', Model__User);
+}
+
+export default Export__User;

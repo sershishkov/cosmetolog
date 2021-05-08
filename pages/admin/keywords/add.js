@@ -1,12 +1,9 @@
-import React, { useEffect, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { setNameOfPage } from '../../../reduxStore/actions/nameOfPage';
-import {
-  getOne__KEYWORD,
-  updateOne__KEYWORD,
-} from '../../../reduxStore/actions/admin/keyword';
+import { addOne__KEYWORD } from '../../../reduxStore/actions/admin/keyword';
 
 import Fab from '@material-ui/core/Fab';
 
@@ -27,13 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const KEYWORD__Edit = () => {
+const KEYWORD__Add = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const state__nameOfPage = useSelector((state) => state.nameOfPage.pageName);
-  const state__KEYWORD = useSelector((state) => state.keyword);
   const router = useRouter();
-  const id__KEYWORD = router.query.id;
 
   const [formData, setFormData] = useState({
     keyWord_text: '',
@@ -48,24 +43,11 @@ const KEYWORD__Edit = () => {
     });
   };
   useEffect(() => {
-    dispatch(setNameOfPage('Редактировать ключевое слово'));
-    if (id__KEYWORD) {
-      dispatch(getOne__KEYWORD(id__KEYWORD));
-    }
-  }, [id__KEYWORD]);
-
-  useLayoutEffect(() => {
-    if (state__KEYWORD.one__KEYWORD) {
-      setFormData({
-        keyWord_text: state__KEYWORD.one__KEYWORD.keyWord_text
-          ? state__KEYWORD.one__KEYWORD.keyWord_text
-          : '',
-      });
-    }
-  }, [state__KEYWORD.one__KEYWORD]);
+    dispatch(setNameOfPage('Добавить ключевое слово'));
+  }, [dispatch]);
 
   const onSubmit = () => {
-    dispatch(updateOne__KEYWORD(keyWord_text, id__KEYWORD));
+    dispatch(addOne__KEYWORD(keyWord_text));
 
     clearFormData();
     router.back();
@@ -132,11 +114,11 @@ const KEYWORD__Edit = () => {
           onClick={() => onSubmit()}
           color='primary'
         >
-          Редактировать
+          Добавить
         </Button>
       </Grid>
     </Grid>
   );
 };
 
-export default KEYWORD__Edit;
+export default KEYWORD__Add;

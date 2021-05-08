@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import Link from 'next/link';
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import { setNameOfPage } from '../reduxStore/actions/nameOfPage';
 
 import { makeStyles } from '@material-ui/styles';
@@ -25,7 +24,7 @@ function Home() {
   // const state__nameOfPage = useSelector((state) => state.nameOfPage.pageName);
 
   useEffect(() => {
-    dispatch(setNameOfPage('this is main page from state redux'));
+    dispatch(setNameOfPage('Home page'));
   }, [dispatch]);
   return (
     <Grid
@@ -46,10 +45,5 @@ function Home() {
     </Grid>
   );
 }
-
-// Home.propTypes = {
-//   setNameOfPage: PropTypes.func.isRequired,
-//   state__nameOfPage: PropTypes.string.isRequired,
-// };
 
 export default Home;

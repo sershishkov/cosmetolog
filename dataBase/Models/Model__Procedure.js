@@ -9,7 +9,7 @@ const Model__Procedure = new mongoose.Schema({
   },
   keyWords: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'KeyWords',
+    ref: 'KeyWord',
   },
   header_H1: { type: String },
   header_H2: { type: String },
@@ -32,4 +32,12 @@ const Model__Procedure = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Procedure', Model__Procedure);
+let Export__Procedure;
+
+if (mongoose.models.Procedure) {
+  Export__Procedure = mongoose.model('Procedure');
+} else {
+  Export__Procedure = mongoose.model('Procedure', Model__Procedure);
+}
+
+export default Export__Procedure;

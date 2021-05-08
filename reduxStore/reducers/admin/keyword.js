@@ -10,20 +10,29 @@ const KEYWORD__Slice = createSlice({
   name: 'KEYWORD__Slice',
   initialState,
   reducers: {
-    add__KEYWORD(state, action) {
-      state.pageName = action.payload.pageName;
+    add_one__KEYWORD(state, action) {
+      state.array__KEYWORD = state.array__KEYWORD.push(action.payload);
+      state.loading__KEYWORD = false;
     },
-    update__KEYWORD(state, action) {
-      state.pageName = action.payload.pageName;
+    update_one_KEYWORD(state, action) {
+      state.array__KEYWORD = state.array__KEYWORD.map((item) =>
+        item._id === action.payload._id ? action.payload : item
+      );
+      state.loading__KEYWORD = false;
     },
     get_all__KEYWORD(state, action) {
-      state.pageName = action.payload.pageName;
+      state.array__KEYWORD = action.payload;
+      state.loading__KEYWORD = false;
     },
     get_one__KEYWORD(state, action) {
-      state.pageName = action.payload.pageName;
+      state.one__KEYWORD = action.payload;
+      state.loading__KEYWORD = false;
     },
     delete_one__KEYWORD(state, action) {
-      state.pageName = action.payload.pageName;
+      state.array__KEYWORD = state.array__KEYWORD.filter(
+        (item) => item._id !== action.payload
+      );
+      state.loading__KEYWORD = false;
     },
   },
 });

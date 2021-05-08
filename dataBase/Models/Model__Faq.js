@@ -9,7 +9,7 @@ const Model__Faq = new mongoose.Schema({
   },
   keyWords: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'KeyWords',
+    ref: 'KeyWord',
   },
   questionText: {
     type: String,
@@ -19,4 +19,12 @@ const Model__Faq = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Review', Model__Faq);
+let Export__Faq;
+
+if (mongoose.models.Faq) {
+  Export__Faq = mongoose.model('Faq');
+} else {
+  Export__Faq = mongoose.model('Faq', Model__Faq);
+}
+
+export default Export__Faq;

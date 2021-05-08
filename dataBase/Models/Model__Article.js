@@ -9,7 +9,7 @@ const Model__Article = new mongoose.Schema({
   },
   keyWords: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: 'KeyWords',
+    ref: 'KeyWord',
   },
   header_H1: { type: String },
   header_H2: { type: String },
@@ -32,4 +32,12 @@ const Model__Article = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Article', Model__Article);
+let Export__Article;
+
+if (mongoose.models.Article) {
+  Export__Article = mongoose.model('Article');
+} else {
+  Export__Article = mongoose.model('Article', Model__Article);
+}
+
+export default Export__Article;

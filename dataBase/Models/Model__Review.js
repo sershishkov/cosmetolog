@@ -10,4 +10,12 @@ const Model__Review = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Review', Model__Review);
+let Export__Review;
+
+if (mongoose.models.Review) {
+  Export__Review = mongoose.model('Review');
+} else {
+  Export__Review = mongoose.model('Review', Model__Review);
+}
+
+export default Export__Review;
