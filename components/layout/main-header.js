@@ -243,13 +243,15 @@ const useStyles = makeStyles((theme) => ({
   accordion: {},
   accordionSummary: {},
   accordionSummaryHeading: {
-    [theme.breakpoints.up('md')]: {
+    fontSize: '2rem',
+    [theme.breakpoints.down('md')]: {
       fontSize: '2rem',
     },
   },
   accordionSummaryDetails: {},
   listAccoprdion: {
-    [theme.breakpoints.up('md')]: {
+    fontSize: '2rem',
+    [theme.breakpoints.down('md')]: {
       fontSize: '2rem',
     },
   },
