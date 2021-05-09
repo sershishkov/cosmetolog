@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+// import KeyWord from './Model__KeyWord';
+
 const Model__Faq = new mongoose.Schema({
   metaTitle: {
     type: String,
@@ -7,10 +9,12 @@ const Model__Faq = new mongoose.Schema({
   metaDescription: {
     type: String,
   },
-  keyWords: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: 'KeyWord',
-  },
+  keyWords: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'KeyWord',
+    },
+  ],
   questionText: {
     type: String,
   },

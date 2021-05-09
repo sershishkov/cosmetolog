@@ -103,4 +103,3 @@ const handler = async (req, res) => {
 
 // export default withProtect(withRoles(handler));
 export default connectDB(handler);
-// export default handler;
